@@ -5,6 +5,7 @@ let type = {
     Basket: 'basket'
 }
 
+
 export default class List {
     constructor(container, url, basket = null) {
         this.items = [];
@@ -12,7 +13,6 @@ export default class List {
         this.url = 'https://raw.githubusercontent.com/kellolo/static/master/JSON' + url;
         this.basket = basket;
         this._init();
-    }
 
     _init() {
         this._get(this.url)
@@ -21,10 +21,10 @@ export default class List {
                 if (this.filtered) {
                     this.filtered = data;
                 }
-                
                 this._render();
                 this._handleActions();
             })
+
     }
 
     _get(url) {
@@ -37,10 +37,14 @@ export default class List {
         arr.forEach(item => {
             str += new Item(item, type[this.constructor.name]).render()
         })
+
         this.container.innerHTML = str;
+
     }
 
     _handleActions() {
         return true
+
     }
+
 }
