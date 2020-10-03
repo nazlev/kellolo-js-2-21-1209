@@ -779,5 +779,50 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                showBasket: true,
+                catalogUrl: 'https://raw.githubusercontent.com/kellolo/static/master/JSON/catalog.json',
+                basketUrl: 'https://raw.githubusercontent.com/kellolo/static/master/JSON/basket.json',
+                basketItems: [],
+                catalogItems: []
+            },
+            computed: {
+            },
+            methods: {
+                get(url) {
+                    return fetch(url).then(d => d.json())
+                },
+                buy(item) {
+                    console.log(item)
+                    let find = this.basketItems.find(el => el.productId == item.productId);
+                    if (find) {
+                        find.amount++;
+                    } else {
+                        let newItem = Object.assign({}, item, { amount: 1 });
+                        console.log(newItem)
+                        this.basketItems.push(newItem);
+                    }
+                    // this._render();
+                }
+            },
+            mounted() {
+                this.get(this.basketUrl)
+                    .then(items => {
+                        this.basketItems = items;
+                        console.log(this.basketItems);
+                    })
+                this.get(this.catalogUrl)
+                    .then(items => {
+                        this.catalogItems = items;
+                        console.log(this.catalogItems);
+                    })
+            },
+        });
+
+    </script>
 </body>
 </html>
