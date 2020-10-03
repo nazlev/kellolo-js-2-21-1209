@@ -13,92 +13,108 @@
 </head>
 
 <body>
-    <header class="header center">
-        <div class="header__left">
-            <a class="logo" href="index.html">
-                <img class="logo__img" src="../src/assets/img/logo.png" alt="logo">BRAN<span class="accent">D</span>
-            </a>
-            <form class="header__form" action="#">
-                <div class="browse">Browse <i class="fa fa-sort-desc browse__icon" aria-hidden="true"></i></div>
-                <input type="text" value="Search for Item..." class="input_text">
-                <button class="search_button"><img src="../src/assets/img/search.png" alt="search"></button>
-            </form>
-        </div>
-        <div class="header__right">
-            <div class="header__cart-drop">
-                <button class="header__basket-button" id="basket-toggler" ><img class="header__cart" src="../src/assets/img/cart.png" alt="cart"></button>
-                
-                <div class="header__drop">
-                    
-                    <!--<div class="header__dropcost">
+    <div id="app">
+        <header class="header center">
+            <div class="header__left">
+                <a class="logo" href="index.html">
+                    <img class="logo__img" src="../src/assets/img/logo.png" alt="logo">BRAN<span class="accent">D</span>
+                </a>
+                <form class="header__form" action="#">
+                    <div class="browse">Browse <i class="fa fa-sort-desc browse__icon" aria-hidden="true"></i></div>
+                    <input type="text" value="Search for Item..." class="input_text">
+                    <button class="search_button"><img src="../src/assets/img/search.png" alt="search"></button>
+                </form>
+            </div>
+            <div class="header__right">
+                <div class="header__cart-drop">
+                    <button @click="showBasket = !showBasket" class="header__basket-button" id="basket-toggler"><img
+                            class="header__cart" src="../src/assets/img/cart.png" alt="cart"></button>
+
+                    <div v-show="showBasket" class="header__drop">
+
+                        <!--<div class="header__dropcost">
                         <p>total</p>
                         <p>550</p>
                     </div>
                     <a href="checkout.html" class="header__dropbutton">Checkout</a>
                     <a href="shopping_cart.html" class="header__dropbutton">Go to cart</a>-->
+                        <div class="header__dropbox" v-for="item of basketItems">
+                            <a href="single_page.html">
+                                <img :src="item.productImg" class="header__dropimg" alt="" width="85" height="100">
+                            </a>
+                            <div class="header__dropcontent">
+                                <a href="single_page.html">
+                                    <h3 class="header__dropname">{{ item.productName }}</h3>
+                                    <img src="../src/assets/img/headerdropstars.jpg" alt="">
+                                    <p class="header__dropprice">{{ item.amount }} Х {{ item.productPrice }}</p>
+                                </a>
+                            </div>
+                            <button @click="buy(item)" class="header__cart-drop-button fas fa-times-circle"></button>
+                        </div>
 
+                    </div>
                 </div>
+                <a href="#" class="button">My Account <i class="fa fa-sort-desc button__icon"
+                        aria-hidden="true"></i></a>
             </div>
-            <a href="#" class="button">My Account <i class="fa fa-sort-desc button__icon" aria-hidden="true"></i></a>
-        </div>
-    </header>
-    <header class="nav">
-        <ul class="menu center">
-            <li class="menu__list"><a href="index.html" class="menu__link">Home</a></li>
-            <li class="menu__list">
-                <a href="product.html" class="menu__link">Man</a>
-                <div class="drop">
-                    <div class="drop__flex">
-                        <h3 class="drop__h3">Women</h3>
-                        <ul class="drop__ul">
-                            <li><a href="product.html" class="drop__a">Dresses </a></li>
-                            <li><a href="product.html" class="drop__a">Blazers </a></li>
-                            <li><a href="product.html" class="drop__a">Denim </a></li>
-                            <li><a href="product.html" class="drop__a">Leggings/Pants </a></li>
-                            <li><a href="product.html" class="drop__a">Skirts/Shorts </a></li>
-                            <li><a href="product.html" class="drop__a">Accessories</a></li>
-                        </ul>
+        </header>
+        <header class="nav">
+            <ul class="menu center">
+                <li class="menu__list"><a href="index.html" class="menu__link">Home</a></li>
+                <li class="menu__list">
+                    <a href="product.html" class="menu__link">Man</a>
+                    <div class="drop">
+                        <div class="drop__flex">
+                            <h3 class="drop__h3">Women</h3>
+                            <ul class="drop__ul">
+                                <li><a href="product.html" class="drop__a">Dresses </a></li>
+                                <li><a href="product.html" class="drop__a">Blazers </a></li>
+                                <li><a href="product.html" class="drop__a">Denim </a></li>
+                                <li><a href="product.html" class="drop__a">Leggings/Pants </a></li>
+                                <li><a href="product.html" class="drop__a">Skirts/Shorts </a></li>
+                                <li><a href="product.html" class="drop__a">Accessories</a></li>
+                            </ul>
+                        </div>
+                        <div class="drop__flex">
+                            <h3 class="drop__h3">Women</h3>
+                            <ul class="drop__ul">
+                                <li><a href="product.html" class="drop__a">Dresses </a></li>
+                                <li><a href="product.html" class="drop__a">Tops </a></li>
+                                <li><a href="product.html" class="drop__a">Sweaters/Knits </a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="drop__flex">
-                        <h3 class="drop__h3">Women</h3>
-                        <ul class="drop__ul">
-                            <li><a href="product.html" class="drop__a">Dresses </a></li>
-                            <li><a href="product.html" class="drop__a">Tops </a></li>
-                            <li><a href="product.html" class="drop__a">Sweaters/Knits </a></li>
-                        </ul>
+                </li>
+                <li class="menu__list"><a href="single_page.html" class="menu__link">Women</a></li>
+                <li class="menu__list"><a href="product.html" class="menu__link">Kids</a></li>
+                <li class="menu__list"><a href="product.html" class="menu__link">Accoseriese</a></li>
+                <li class="menu__list"><a href="product.html" class="menu__link">Featured</a></li>
+                <li class="menu__list"><a href="product.html" class="menu__link">Hot Deals</a>
+                    <div class="drop drop_last">
+                        <div class="drop__flex">
+                            <h3 class="drop__h3">Women</h3>
+                            <ul class="drop__ul">
+                                <li><a href="product.html" class="drop__a">Dresses </a></li>
+                                <li><a href="product.html" class="drop__a">Blazers </a></li>
+                                <li><a href="product.html" class="drop__a">Denim </a></li>
+                                <li><a href="product.html" class="drop__a">Leggings/Pants </a></li>
+                                <li><a href="product.html" class="drop__a">Skirts/Shorts </a></li>
+                                <li><a href="product.html" class="drop__a">Accessories</a></li>
+                            </ul>
+                        </div>
+                        <div class="drop__flex">
+                            <h3 class="drop__h3">Women</h3>
+                            <ul class="drop__ul">
+                                <li><a href="product.html" class="drop__a">Dresses </a></li>
+                                <li><a href="product.html" class="drop__a">Tops </a></li>
+                                <li><a href="product.html" class="drop__a">Sweaters/Knits </a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </li>
-            <li class="menu__list"><a href="single_page.html" class="menu__link">Women</a></li>
-            <li class="menu__list"><a href="product.html" class="menu__link">Kids</a></li>
-            <li class="menu__list"><a href="product.html" class="menu__link">Accoseriese</a></li>
-            <li class="menu__list"><a href="product.html" class="menu__link">Featured</a></li>
-            <li class="menu__list"><a href="product.html" class="menu__link">Hot Deals</a>
-                <div class="drop drop_last">
-                    <div class="drop__flex">
-                        <h3 class="drop__h3">Women</h3>
-                        <ul class="drop__ul">
-                            <li><a href="product.html" class="drop__a">Dresses </a></li>
-                            <li><a href="product.html" class="drop__a">Blazers </a></li>
-                            <li><a href="product.html" class="drop__a">Denim </a></li>
-                            <li><a href="product.html" class="drop__a">Leggings/Pants </a></li>
-                            <li><a href="product.html" class="drop__a">Skirts/Shorts </a></li>
-                            <li><a href="product.html" class="drop__a">Accessories</a></li>
-                        </ul>
-                    </div>
-                    <div class="drop__flex">
-                        <h3 class="drop__h3">Women</h3>
-                        <ul class="drop__ul">
-                            <li><a href="product.html" class="drop__a">Dresses </a></li>
-                            <li><a href="product.html" class="drop__a">Tops </a></li>
-                            <li><a href="product.html" class="drop__a">Sweaters/Knits </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </header>
-    <div class="promo">
+                </li>
+            </ul>
+        </header>
+        <!-- <div class="promo">
         <div class="center promo__box">
             <div class="promo__content">
                 <h1 class="promo__h1">THE BRAND</h1>
@@ -143,19 +159,30 @@
                 </div>
             </a>
         </div>
-    </section>
-    <section class="featured center">
-        <div class="featured__head">
-            <h2 class="featured__head-h1">Fetured Items</h2>
-            <h3 class="featured__head-h3">Shop for items based on what we featured in this week</h3>
-        </div>
-        <div class="featured__items">
-            
-        </div>
-        <div class="featured__button">
-            <a href="#" class="button">Browse All Product</a>
-        </div>
-    </section>
+    </section> -->
+        <section class="featured center">
+            <div class="featured__head">
+                <h2 class="featured__head-h1">Fetured Items</h2>
+                <h3 class="featured__head-h3">Shop for items based on what we featured in this week</h3>
+            </div>
+            <div class="featured__items">
+                <div class="featured__items_block" v-for="item of catalogItems">
+                    <a href="single_page.html">
+                        <div class="featured__items_block-image-1 featured__hover"><img class="feturedProduct"
+                                :src="item.productImg" alt="product1"></div>
+                        <h3 class="featured__items_block-name">{{ item.productName }}</h3>
+                        <p class="featured__items_block-price">{{ item.productPrice }}</p>
+                    </a>
+                    <button @click="buy(item)" class="featured__add" name="add">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+            <div class="featured__button">
+                <a href="#" class="button">Browse All Product</a>
+            </div>
+        </section>
+    </div>
     <section class="offer center">
         <div class="offer__block">
             <h2 class="offer__block-h1">30% OFFER</h2>
@@ -274,7 +301,52 @@
             </ul>
         </div>
     </footer>
-    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                showBasket: true,
+                catalogUrl: 'https://raw.githubusercontent.com/kellolo/static/master/JSON/catalog.json',
+                basketUrl: 'https://raw.githubusercontent.com/kellolo/static/master/JSON/basket.json',
+                basketItems: [],
+                catalogItems: []
+            },
+            computed: {
+            },
+            methods: {
+                get(url) {
+                    return fetch(url).then(d => d.json())
+                },
+                buy(item) {
+                    console.log(item)
+                    let find = this.basketItems.find(el => el.productId == item.productId);
+                    if (find) {
+                        find.amount++;
+                    } else {
+                        let newItem = Object.assign({}, item, { amount: 1 });
+                        console.log(newItem)
+                        this.basketItems.push(newItem);
+                    }
+                    // this._render();
+                }
+            },
+            mounted() {
+                this.get(this.basketUrl)
+                    .then(items => {
+                        this.basketItems = items;
+                        console.log(this.basketItems);
+                    })
+                this.get(this.catalogUrl)
+                    .then(items => {
+                        this.catalogItems = items;
+                        console.log(this.catalogItems);
+                    })
+            },
+        });
+
+    </script>
 </body>
 
 </html>
