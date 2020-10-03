@@ -1,3 +1,25 @@
+#catalog {
+    justify-content: space-between;
+    margin-bottom: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 80px;
+}
+.btn_catalog {
+    border: none;
+    outline: none;
+    width: 130px;
+    line-height: 38px;
+    background-color: #f16d7f;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    &:focus {
+        outline: none;
+    }
+}
 .feturedItem {
     margin-top: 2rem;
 }

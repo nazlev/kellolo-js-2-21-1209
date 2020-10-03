@@ -95,12 +95,15 @@ $colorHeadlineText: #f16d7f;
   color: #ffffff;
   font-size: 15px;
   font-weight: 400;
-}
-.header__account-bar:hover {
-  opacity: 70%;
-}
-.header__account-bar:active {
-  transform: translateY(4px);
+  &:hover {
+    opacity: 70%;
+  }
+  &:active {
+    transform: translateY(4px);
+  }
+  &:focus {
+    outline: none;
+  }
 }
 .headerLine {
   border-bottom: 1px solid #ececec;

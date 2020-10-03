@@ -211,6 +211,9 @@ a {
   & i {
     padding-left: 20px;
   }
+  &:focus {
+    outline: none;
+  }
 }
 .feature {
   height: 529px;
