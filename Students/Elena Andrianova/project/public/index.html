@@ -24,8 +24,8 @@
 
 
         <div class="headerCart" >
-            <button id="basket-toggler" class="header__cart"><img src="../src/assets/imgs/cart.png" alt="cart" class="header__cart"></button>
-            <div id="basket" class="headerCartWrap">
+            <button id="basket-toggler" class="header__cart"><img src="../src/assets/imgs/cart.png" alt="cart" class="header__cart"  @click="showCalc = !showCalc"></button>
+            <div id="basket" class="headerCartWrap" v-show="showCalc">
                 <div class="headerCartWrapInAll">
 
 
