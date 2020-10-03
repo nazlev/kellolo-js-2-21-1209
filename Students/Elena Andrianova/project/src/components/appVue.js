@@ -14,12 +14,12 @@ const appVue = new Vue({
         },
 
         buy(item) {
+            console.log(item)
             let find = this.basketItems.find(el => el.productId == item.productId);
             if (find) {
                 find.amount++;
             } else {
                 this.basketItems.push(Object.assign({}, item, { amount: 1 }));
-                console.log(this.basketItems)
             }
         },
 
