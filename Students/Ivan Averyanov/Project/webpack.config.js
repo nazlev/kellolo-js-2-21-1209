@@ -15,7 +15,12 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|svg|gif)$/i,
                 use: ['file-loader']
-            }
+            },
+            {
+                alias: {
+                  'vue$': 'vue/dist/vue.esm.js' 
+                }
+              }
         ]
     },
     plugins: [
