@@ -11,7 +11,7 @@ class ProductItem{
         if (this.container.attributes.id.nodeValue == 'basket-items'){
             return `
                 <div class="d-flex headerCartWrapIn mb-1 p-2 dropDown--product">
-                        <img src="${this.item.productImg}" alt="" width="85" height="100>
+                        <img src="${this.item.productImg}" alt="" width="85" height="100">
                         <div>
                             <div>${this.item.productName}</div>
                             <span>
