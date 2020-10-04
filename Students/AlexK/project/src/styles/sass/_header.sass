@@ -14,6 +14,59 @@ body
 .container 
     width: $containerSize
     margin: auto
+.headerBasket 
+    position: relative
+    margin-left: auto
+    margin-right: 26px
+    &_count
+        background-color: $accentColor 
+        position: absolute
+        top: 0
+        left: 80%
+        border-radius: 50%
+        width: 15px
+        height: 15px
+        font-size: 10px
+        font-weight: 700
+        line-height: 14px
+        text-align: center
+        color: white
+        display: none
+    &_detail
+        justify-content: center
+        align-items: center
+        border: 1px solid $grayFont
+        box-shadow: -5px 6px 15px -5px rgba(10,10,10,0.65)
+        border-radius: 4px
+        width: 300px
+        position: absolute
+        top: 50px
+        display: flex
+        flex-direction: column
+        background-color: $whiteBg
+        nav
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-items: center
+            margin-bottom: 10px
+        &_items
+            display: flex
+            flex-direction: column
+            width: inherit
+        &-item
+            display: flex
+            margin-top: 5px
+            justify-content: space-between
+            align-items: center
+            padding: 0px 10px 0px 10px
+            &__about
+                display: flex
+                height: inherit
+                flex-direction: column
+                justify-content: space-between
+                align-items: flex-start
+
 .header 
     height: 100px
     +flexAlignCenter
@@ -57,7 +110,7 @@ body
     width: 165px
     line-height: 51px
     text-transform: uppercase
-    background: url("../../assets/img/logo.png") no-repeat
+    background: url("../img/logo.png") no-repeat
     background-blend-mode: overlay
     font-size: 27px
     padding-left: 72px
