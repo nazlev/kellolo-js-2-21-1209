@@ -42,5 +42,4 @@ export default class Basket extends List {
         this._render();
     }
 
-
 }
