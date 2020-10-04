@@ -55,7 +55,7 @@
         </div>
         
         <div>
-            <button @click="showCatalog = !showCatalog">{{ computedCatalogBtnCaption }} Catalog</button>
+            <button style="height: 200px background-color: black" @click="showCatalog = !showCatalog">{{ computedCatalogBtnCaption }} Catalog</button>
             <div v-show="showCatalog" id="catalog" class="container">
                 <div class="catalog-item" v-for="item of items">
                     <img :src="item.productImg" alt="" width="70">

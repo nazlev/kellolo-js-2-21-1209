@@ -1,6 +1,5 @@
 export default class Basket {
     constructor() {
-        this.height= 400;
         this.items=[];
         this.container= null;
         this.containerItems= null;
@@ -70,7 +69,6 @@ export default class Basket {
             this.container.classList.toggle('invisible');
             this.shown = !this.shown;
         })
-        let remove=document.querySelectorAll(".action > button");
         this.container.addEventListener('click', ev => {
             if (ev.target.name == 'remove') {
                 this._remove(ev.target.dataset.id);
@@ -83,8 +81,6 @@ export default class Basket {
             find.amount++;
         } else {
             this.items.push(item);
-            this.height+=105
-            this.container.style.height=this.height+'px';
         }
         this.totalPrice();
         this._render();
@@ -95,8 +91,6 @@ export default class Basket {
             find.amount--;
         } else {
             this.items.splice(this.items.indexOf(find), 1);
-            this.height-=105;
-            this.container.style.height=this.height+'px';
         }
         this.totalPrice();
         this._render();
